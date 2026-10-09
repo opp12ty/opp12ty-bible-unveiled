@@ -1,0 +1,41 @@
+import type { Journey, TimelineEvent } from "./types";
+
+export const TIMELINE: TimelineEvent[] = [
+  { id: "merneptah", year: -1208, label: "Merneptah Stele names Israel", region: "egypt", note: "Earliest known extra-biblical mention of Israel.", certainty: "documented", link: "archaeology/merneptah-stele" },
+  { id: "sea-peoples", year: -1175, label: "Philistines settle the southern coast", region: "israel", note: "Approximate date of settlement of the coastal plain.", certainty: "well-supported", link: "ancient-world/philistines" },
+  { id: "david", year: -1000, label: "David (traditional date)", region: "israel", note: "Traditional dating; the size of his kingdom is debated.", certainty: "debated", link: "people/david" },
+  { id: "shoshenq", year: -925, label: "Shoshenq's campaign list at Karnak", region: "egypt", note: "Often linked with Shishak of 1 Kings 14:25.", certainty: "likely", link: "ancient-world/egypt" },
+  { id: "tel-dan", year: -840, yearTo: -800, label: "Tel Dan Stele", region: "israel", note: "Aramaic inscription naming the \"house of David\".", certainty: "well-supported", link: "archaeology/tel-dan-stele" },
+  { id: "mesha", year: -840, label: "Mesha Stele", region: "israel", note: "Moabite king's inscription naming Omri and Israel.", certainty: "documented", link: "archaeology/mesha-stele" },
+  { id: "samaria", year: -722, label: "Fall of Samaria", region: "mesopotamia", note: "Assyria conquers the northern kingdom.", certainty: "documented", link: "ancient-world/assyria" },
+  { id: "tunnel", year: -700, label: "Hezekiah's Tunnel", region: "israel", note: "Late 8th century BCE.", certainty: "well-supported", link: "investigations/hezekiahs-tunnel" },
+  { id: "sennacherib", year: -701, label: "Sennacherib's campaign in Judah", region: "mesopotamia", note: "Siege of Lachish; Jerusalem besieged.", certainty: "documented", link: "investigations/sennacherib-at-jerusalem" },
+  { id: "ketef", year: -600, label: "Ketef Hinnom amulets", region: "israel", note: "Late 7th–6th century BCE (debated).", certainty: "debated", link: "manuscripts/ketef-hinnom" },
+  { id: "destruction", year: -586, label: "Babylon destroys Jerusalem", region: "mesopotamia", note: "End of the Judean monarchy.", certainty: "documented", link: "people/nebuchadnezzar" },
+  { id: "cyrus", year: -539, label: "Cyrus conquers Babylon", region: "persia", note: "Begins Persian rule.", certainty: "documented", link: "investigations/the-cyrus-cylinder" },
+  { id: "second-temple", year: -516, label: "Second Temple completed", region: "israel", note: "Traditional date.", certainty: "likely" },
+  { id: "alexander", year: -332, label: "Alexander the Great in the Levant", region: "greece-rome", note: "Start of the Hellenistic period.", certainty: "documented", link: "ancient-world/greece" },
+  { id: "lxx", year: -250, label: "Septuagint begins", region: "text", note: "Greek translation of the Torah in Alexandria.", certainty: "well-supported", link: "manuscripts/septuagint" },
+  { id: "isaiah-scroll", year: -125, label: "Great Isaiah Scroll copied", region: "text", note: "Dated by paleography and radiocarbon.", certainty: "well-supported", link: "manuscripts/great-isaiah-scroll" },
+  { id: "pompey", year: -63, label: "Pompey takes Jerusalem", region: "greece-rome", note: "Roman rule begins.", certainty: "documented", link: "ancient-world/rome" },
+  { id: "herod", year: -37, yearTo: -4, label: "Reign of Herod the Great", region: "israel", note: "Builder of Caesarea and the Temple expansion.", certainty: "documented", link: "people/herod-the-great" },
+  { id: "jesus-birth", year: -5, label: "Birth of Jesus (c. 6–4 BCE)", region: "israel", note: "Before Herod's death in 4 BCE.", certainty: "debated", link: "interpretations/star-of-bethlehem" },
+  { id: "pilate", year: 26, yearTo: 36, label: "Pilate prefect of Judea", region: "israel", note: "Pilate stone found 1961.", certainty: "documented", link: "investigations/the-pilate-stone" },
+  { id: "caiaphas", year: 18, yearTo: 36, label: "Caiaphas high priest", region: "israel", note: "Josephus; ossuary found 1990.", certainty: "documented", link: "investigations/who-was-caiaphas" },
+  { id: "crucifixion", year: 30, label: "Crucifixion (30 or 33 CE)", region: "israel", note: "Dating debated.", certainty: "debated" },
+  { id: "paul", year: 50, yearTo: 52, label: "Paul in Corinth", region: "greece-rome", note: "Acts 18; Gallio inscription dating.", certainty: "well-supported", link: "people/paul" },
+  { id: "p52", year: 125, yearTo: 175, label: "Papyrus 52 copied", region: "text", note: "Earliest known New Testament fragment (paleographic estimate).", certainty: "likely", link: "manuscripts/papyrus-52" },
+  { id: "destruction-70", year: 70, label: "Temple destroyed", region: "greece-rome", note: "Roman suppression of the First Revolt.", certainty: "documented", link: "people/josephus" },
+  { id: "josephus", year: 93, label: "Josephus writes Antiquities", region: "greece-rome", note: "Major source on the Second Temple period.", certainty: "documented", link: "people/josephus" },
+  { id: "sinaiticus", year: 350, label: "Codex Sinaiticus and Vaticanus", region: "text", note: "Great 4th-century Greek Bibles.", certainty: "well-supported", link: "manuscripts/codex-sinaiticus" },
+  { id: "leningrad", year: 1008, label: "Leningrad Codex", region: "text", note: "Oldest complete Hebrew Bible manuscript.", certainty: "documented", link: "manuscripts/leningrad-codex" },
+  { id: "qumran-find", year: 1947, label: "Dead Sea Scrolls discovered", region: "text", note: "First finds in a cave near Qumran.", certainty: "documented", link: "places/qumran" },
+];
+
+export const JOURNEYS: Journey[] = [
+  { slug: "stones-that-speak", title: "Stones That Speak", blurb: "Five inscriptions that name people and places from the Bible.", minutes: 40, steps: ["investigations/the-pilate-stone", "investigations/house-of-david-tel-dan", "investigations/israel-in-the-merneptah-stele", "investigations/hezekiahs-tunnel", "investigations/who-was-caiaphas"] },
+  { slug: "how-we-got-the-text", title: "How We Got the Text", blurb: "Manuscripts, scrolls, and the question of transmission.", minutes: 30, steps: ["investigations/the-great-isaiah-scroll", "investigations/goliaths-height", "manuscripts/septuagint", "manuscripts/codex-sinaiticus", "manuscripts/papyrus-52"] },
+  { slug: "empires-and-exile", title: "Empires and Exile", blurb: "Assyria, Babylon, and Persia from the point of view of Judah.", minutes: 35, steps: ["investigations/sennacherib-at-jerusalem", "ancient-world/assyria", "ancient-world/babylon", "investigations/the-cyrus-cylinder", "ancient-world/persia"] },
+  { slug: "everyday-life", title: "Everyday Life in the Biblical World", blurb: "Houses, bread, boats, money, and mourning.", minutes: 30, steps: ["oddity-vault/houses-of-ordinary-people", "oddity-vault/bread-baking", "oddity-vault/fishing-boat", "oddity-vault/money-and-weights", "oddity-vault/tearing-clothes"] },
+  { slug: "did-the-bible-say-that", title: "Did the Bible Actually Say That?", blurb: "Eleven popular beliefs checked against the text.", minutes: 25, steps: ["belief-check/forbidden-fruit-apple", "belief-check/three-wise-men", "belief-check/spare-the-rod", "belief-check/money-root-of-evil", "belief-check/mary-magdalene-prostitute"] },
+];

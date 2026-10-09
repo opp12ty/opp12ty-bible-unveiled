@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+/* ANCIENT WORLD · FUTURE INTERFACE — design tokens */
+:root {
+  --navy-950: #060a16;
+  --navy-900: #0a1124;
+  --navy-800: #111a35;
+  --navy-700: #1a2648;
+  --navy-600: #2a3a66;
+  --gold: #d9ad4b;
+  --gold-soft: #f1d58a;
+  --blue: #43b0ff;
+  --emerald: #34d6a0;
+  --violet: #ae95ff;
+  --amber: #f3ab3c;
+  --red: #ff7a7a;
+  --parchment: #f4ecd6;
+  --parchment-2: #e9dcbc;
+  --ink: #261c10;
+  --text: #eef2ff;
+  --muted: #a9b4d4;
+  --line: rgba(160, 180, 255, 0.16);
+  --radius: 14px;
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-navy-950: var(--navy-950);
+  --color-navy-900: var(--navy-900);
+  --color-navy-800: var(--navy-800);
+  --color-navy-700: var(--navy-700);
+  --color-gold: var(--gold);
+  --color-blue: var(--blue);
+  --color-emerald: var(--emerald);
+  --color-violet: var(--violet);
+  --color-amber: var(--amber);
+  --color-parchment: var(--parchment);
+  --font-serif: var(--serif);
+}
+
+@layer base {
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(67, 176, 255, 0.10), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgba(217, 173, 75, 0.09), transparent 60%),
+    var(--navy-950);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.6;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, .serif { font-family: var(--serif); letter-spacing: 0.005em; }
+a { color: var(--blue); text-underline-offset: 3px; }
+a:hover { color: #8fd0ff; }
+:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 2px; border-radius: 6px; }
+::selection { background: rgba(217, 173, 75, 0.35); }
+
+}
+
+@layer components {
+.wrap { width: min(1180px, 100% - 32px); margin-inline: auto; }
+.muted { color: var(--muted); }
+.card {
+  background: linear-gradient(180deg, rgba(26, 38, 72, 0.7), rgba(17, 26, 53, 0.7));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.card-hover { transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease; }
+.card-hover:hover { transform: translateY(-2px); border-color: rgba(217, 173, 75, 0.55); }
+
+/* Reading surface */
+.parchment {
+  background: linear-gradient(160deg, var(--parchment), var(--parchment-2));
+  color: var(--ink);
+  border-radius: var(--radius);
+  border: 1px solid rgba(80, 55, 20, 0.25);
+}
+.parchment a { color: #0b4a8a; }
+.parchment .muted { color: #5a4a30; }
+
+/* Neon signature controls — restrained glows, always readable */
+.neon {
+  --c: var(--gold);
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.65rem 1.05rem;
+  min-height: 44px;
+  border-radius: 999px;
+  border: 1.5px solid var(--c);
+  color: var(--text);
+  background: color-mix(in srgb, var(--c) 12%, var(--navy-900));
+  font-weight: 650; font-size: 0.92rem; letter-spacing: 0.02em;
+  text-decoration: none; cursor: pointer;
+  box-shadow: 0 0 0 0 transparent, inset 0 0 14px color-mix(in srgb, var(--c) 14%, transparent);
+  transition: box-shadow 0.2s ease, transform 0.12s ease, background 0.2s ease;
+}
+.neon:hover { color: #fff; box-shadow: 0 0 18px color-mix(in srgb, var(--c) 55%, transparent), inset 0 0 18px color-mix(in srgb, var(--c) 22%, transparent); background: color-mix(in srgb, var(--c) 20%, var(--navy-900)); }
+.neon:active { transform: translateY(1px) scale(0.99); }
+.neon[disabled], .neon[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
+.neon-gold { --c: var(--gold); }
+.neon-blue { --c: var(--blue); }
+.neon-emerald { --c: var(--emerald); }
+.neon-violet { --c: var(--violet); border-image: none; }
+.neon-amber { --c: var(--amber); }
+.neon-cinema { --c: var(--gold); background: linear-gradient(135deg, rgba(217, 173, 75, 0.35), rgba(67, 176, 255, 0.22)); padding: 0.85rem 1.4rem; font-size: 1rem; }
+.neon-ghost { --c: var(--blue); background: transparent; }
+.neon-sm { padding: 0.4rem 0.8rem; min-height: 36px; font-size: 0.84rem; }
+
+.chip {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.74rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 0.18rem 0.6rem; border-radius: 999px;
+  border: 1px solid var(--line); color: var(--muted); background: rgba(255, 255, 255, 0.03);
+}
+.chip i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; display: inline-block; }
+
+input[type="text"], input[type="search"], input[type="email"], input[type="password"], textarea, select {
+  width: 100%;
+  background: var(--navy-900); color: var(--text);
+  border: 1px solid var(--line); border-radius: 12px;
+  padding: 0.7rem 0.9rem; font: inherit; min-height: 44px;
+}
+textarea { min-height: 96px; }
+input:focus, textarea:focus, select:focus { border-color: var(--blue); outline: none; box-shadow: 0 0 0 3px rgba(67, 176, 255, 0.25); }
+label { font-size: 0.85rem; color: var(--muted); display: block; margin-bottom: 0.25rem; }
+
+input[type="range"] { accent-color: var(--gold); width: 100%; }
+
+.prose-ub p { margin: 0 0 0.9rem; max-width: 70ch; }
+.hero-glow { position: relative; isolation: isolate; }
+.hero-glow::before {
+  content: ""; position: absolute; inset: -20% -10% auto; height: 70%; z-index: -1;
+  background: radial-gradient(closest-side, rgba(217, 173, 75, 0.20), transparent 70%);
+  filter: blur(10px);
+}
+.skip { position: absolute; left: -999px; top: 0; background: var(--gold); color: #000; padding: 0.6rem 1rem; z-index: 100; }
+.skip:focus { left: 8px; top: 8px; }
+
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+
+.pulse-dot { animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+.reveal { animation: rise 0.35s ease both; }
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* Leaflet theming */
+.ub-tiles { filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.95) saturate(0.7); }
+.leaflet-container { background: var(--navy-900); font-family: var(--sans); border-radius: var(--radius); }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--navy-800); color: var(--text); border: 1px solid var(--line); }
+.leaflet-popup-content a { color: var(--gold-soft); }
+
+/* mobile bottom nav padding */
+@media (max-width: 767px) { body { padding-bottom: 72px; } }
+}
