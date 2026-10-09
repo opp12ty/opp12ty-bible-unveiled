@@ -10,7 +10,7 @@ const g = globalThis as unknown as { __ubPool?: Pool; __ubSchema?: Promise<void>
 function pool(): Pool {
   if (!g.__ubPool) {
     const u = url();
-    const local = /localhost|127\.0\.0\.1/.test(url);
+    const local = /localhost|127\.0\.0\.1/.test(u);
     g.__ubPool = new Pool({ connectionString: u, max: 5, idleTimeoutMillis: 20_000, ssl: local ? undefined : { rejectUnauthorized: false } });
   }
   return g.__ubPool;
