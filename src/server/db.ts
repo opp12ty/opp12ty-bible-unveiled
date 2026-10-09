@@ -2,15 +2,16 @@ import "server-only";
 import { Pool, type QueryResultRow } from "pg";
 
 /** Optional Postgres. The public site runs without it; accounts, sync, community and the admin CMS need it. */
-export const hasDb = () => Boolean(process.env.DATABASE_URL);
+const url = () => process.env.DATABASE_URL || process.env.POSTGRES_URL || "";
+export const hasDb = () => Boolean(url());
 
 const g = globalThis as unknown as { __ubPool?: Pool; __ubSchema?: Promise<void> };
 
 function pool(): Pool {
   if (!g.__ubPool) {
-    const url = process.env.DATABASE_URL!;
+    const u = url();
     const local = /localhost|127\.0\.0\.1/.test(url);
-    g.__ubPool = new Pool({ connectionString: url, max: 5, idleTimeoutMillis: 20_000, ssl: local ? undefined : { rejectUnauthorized: false } });
+    g.__ubPool = new Pool({ connectionString: u, max: 5, idleTimeoutMillis: 20_000, ssl: local ? undefined : { rejectUnauthorized: false } });
   }
   return g.__ubPool;
 }

@@ -15,7 +15,7 @@ export default async function Health() {
         const broken = brokenLinks();
         const s = stats();
         const env: [string, boolean][] = [
-          ["DATABASE_URL", Boolean(process.env.DATABASE_URL)], ["SETUP_TOKEN", Boolean(process.env.SETUP_TOKEN)],
+          ["DATABASE_URL or POSTGRES_URL", Boolean(process.env.DATABASE_URL || process.env.POSTGRES_URL)], ["SETUP_TOKEN", Boolean(process.env.SETUP_TOKEN)],
           ["ANTHROPIC_API_KEY (generated AI answers)", Boolean(process.env.ANTHROPIC_API_KEY)], ["NEXT_PUBLIC_SITE_URL", Boolean(process.env.NEXT_PUBLIC_SITE_URL)],
         ];
         return (
